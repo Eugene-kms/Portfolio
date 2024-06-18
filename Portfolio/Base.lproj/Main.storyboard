@@ -1,24 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" id="BYZ-38-t0r" customClass="HomeViewController" customModule="Portfolio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tn3-Co-5SY">
+                                <rect key="frame" x="0.0" y="238" width="393" height="508"/>
+                                <color key="backgroundColor" name="backgroundColorHome"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Portfolio value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QHO-5T-W8N">
+                                <rect key="frame" x="150.33333333333334" y="123" width="92.333333333333343" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.50588235294117645" green="0.53333333333333333" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$10,000.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qvH-X0-i3k">
+                                <rect key="frame" x="109" y="152" width="175" height="39"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="32"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tEU-vx-7IN">
+                                <rect key="frame" x="0.0" y="746" width="393" height="106"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7uX-Fn-gZT">
+                                        <rect key="frame" x="16" y="10" width="361" height="52"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="52" id="C3j-HT-S0Y"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Add new stock" cornerStyle="large">
+                                            <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="14"/>
+                                            <color key="baseBackgroundColor" red="0.34901960784313724" green="0.33333333333333331" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="addNewStockButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tgx-y2-yL8"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="backgroundColorHome"/>
+                                <constraints>
+                                    <constraint firstItem="7uX-Fn-gZT" firstAttribute="leading" secondItem="tEU-vx-7IN" secondAttribute="leading" constant="16" id="7rg-Pg-wTN"/>
+                                    <constraint firstAttribute="trailing" secondItem="7uX-Fn-gZT" secondAttribute="trailing" constant="16" id="NWj-ks-53k"/>
+                                    <constraint firstAttribute="height" constant="106" id="cTm-sS-rbM"/>
+                                    <constraint firstItem="7uX-Fn-gZT" firstAttribute="top" secondItem="tEU-vx-7IN" secondAttribute="top" constant="10" id="efc-Pk-Ody"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="tEU-vx-7IN" firstAttribute="top" secondItem="tn3-Co-5SY" secondAttribute="bottom" id="1Zr-6Z-gNV"/>
+                            <constraint firstItem="qvH-X0-i3k" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5sb-PD-dBD"/>
+                            <constraint firstItem="tn3-Co-5SY" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="FnT-i2-4sp"/>
+                            <constraint firstItem="qvH-X0-i3k" firstAttribute="top" secondItem="QHO-5T-W8N" secondAttribute="bottom" constant="12" id="Hkt-cq-KXX"/>
+                            <constraint firstAttribute="bottom" secondItem="tEU-vx-7IN" secondAttribute="bottom" id="Tgq-J7-Cfr"/>
+                            <constraint firstItem="QHO-5T-W8N" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="64" id="UaN-l9-4h5"/>
+                            <constraint firstItem="tEU-vx-7IN" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Uoq-DY-REV"/>
+                            <constraint firstItem="QHO-5T-W8N" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YlE-lU-jkZ"/>
+                            <constraint firstItem="tn3-Co-5SY" firstAttribute="top" secondItem="qvH-X0-i3k" secondAttribute="bottom" constant="47" id="bFm-La-1CP"/>
+                            <constraint firstItem="tn3-Co-5SY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ccD-G7-3be"/>
+                            <constraint firstItem="tEU-vx-7IN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="out-Fp-5w0"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="addNewStockButton" destination="7uX-Fn-gZT" id="223-QF-FZs"/>
+                        <outlet property="subtitleValue" destination="qvH-X0-i3k" id="qgj-mO-lS6"/>
+                        <outlet property="tableView" destination="tn3-Co-5SY" id="SEY-5p-3nr"/>
+                        <outlet property="titleLable" destination="QHO-5T-W8N" id="TS3-EF-eW3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="135.1145038167939" y="3.5211267605633805"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="backgroundColorHome">
+            <color red="0.97254901960784312" green="0.98039215686274506" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
