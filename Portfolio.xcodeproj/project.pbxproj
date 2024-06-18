@@ -11,6 +11,13 @@
 		444822AD2C1F25430061B9E2 /* MyStockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444822AB2C1F25430061B9E2 /* MyStockCell.swift */; };
 		444822AE2C1F25430061B9E2 /* MyStockCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 444822AC2C1F25430061B9E2 /* MyStockCell.xib */; };
 		444822B22C1F6B9B0061B9E2 /* StockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444822B12C1F6B9B0061B9E2 /* StockData.swift */; };
+		449FEEF32C2210C5005E24AE /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449FEEF22C2210C5005E24AE /* MarketViewController.swift */; };
+		449FEEF72C222151005E24AE /* MarketMoversCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 449FEEF62C222151005E24AE /* MarketMoversCell.xib */; };
+		449FEEF82C222151005E24AE /* MarketMoversCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449FEEF52C222151005E24AE /* MarketMoversCell.swift */; };
+		449FEEFC2C222361005E24AE /* IndexCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 449FEEFB2C222361005E24AE /* IndexCell.xib */; };
+		449FEEFD2C222361005E24AE /* IndexCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449FEEFA2C222361005E24AE /* IndexCell.swift */; };
+		449FEF012C2223A1005E24AE /* StockCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 449FEF002C2223A1005E24AE /* StockCell.xib */; };
+		449FEF022C2223A1005E24AE /* StockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449FEEFF2C2223A1005E24AE /* StockCell.swift */; };
 		44FEBB792C1E04E700562409 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FEBB782C1E04E700562409 /* AppDelegate.swift */; };
 		44FEBB7B2C1E04E700562409 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FEBB7A2C1E04E700562409 /* SceneDelegate.swift */; };
 		44FEBB7D2C1E04E700562409 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FEBB7C2C1E04E700562409 /* HomeViewController.swift */; };
@@ -33,6 +40,13 @@
 		444822AB2C1F25430061B9E2 /* MyStockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStockCell.swift; sourceTree = "<group>"; };
 		444822AC2C1F25430061B9E2 /* MyStockCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyStockCell.xib; sourceTree = "<group>"; };
 		444822B12C1F6B9B0061B9E2 /* StockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockData.swift; sourceTree = "<group>"; };
+		449FEEF22C2210C5005E24AE /* MarketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
+		449FEEF52C222151005E24AE /* MarketMoversCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketMoversCell.swift; sourceTree = "<group>"; };
+		449FEEF62C222151005E24AE /* MarketMoversCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketMoversCell.xib; sourceTree = "<group>"; };
+		449FEEFA2C222361005E24AE /* IndexCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexCell.swift; sourceTree = "<group>"; };
+		449FEEFB2C222361005E24AE /* IndexCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IndexCell.xib; sourceTree = "<group>"; };
+		449FEEFF2C2223A1005E24AE /* StockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCell.swift; sourceTree = "<group>"; };
+		449FEF002C2223A1005E24AE /* StockCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StockCell.xib; sourceTree = "<group>"; };
 		44FEBB752C1E04E700562409 /* Portfolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Portfolio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44FEBB782C1E04E700562409 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44FEBB7A2C1E04E700562409 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +111,44 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		449FEEF12C22109D005E24AE /* MarketVC */ = {
+			isa = PBXGroup;
+			children = (
+				449FEEF92C22232F005E24AE /* IndexShowCaseCell */,
+				449FEEF42C222111005E24AE /* MarketMoversCell */,
+				449FEEFE2C22237D005E24AE /* StockCell */,
+				449FEEF22C2210C5005E24AE /* MarketViewController.swift */,
+			);
+			path = MarketVC;
+			sourceTree = "<group>";
+		};
+		449FEEF42C222111005E24AE /* MarketMoversCell */ = {
+			isa = PBXGroup;
+			children = (
+				449FEEF52C222151005E24AE /* MarketMoversCell.swift */,
+				449FEEF62C222151005E24AE /* MarketMoversCell.xib */,
+			);
+			path = MarketMoversCell;
+			sourceTree = "<group>";
+		};
+		449FEEF92C22232F005E24AE /* IndexShowCaseCell */ = {
+			isa = PBXGroup;
+			children = (
+				449FEEFA2C222361005E24AE /* IndexCell.swift */,
+				449FEEFB2C222361005E24AE /* IndexCell.xib */,
+			);
+			path = IndexShowCaseCell;
+			sourceTree = "<group>";
+		};
+		449FEEFE2C22237D005E24AE /* StockCell */ = {
+			isa = PBXGroup;
+			children = (
+				449FEEFF2C2223A1005E24AE /* StockCell.swift */,
+				449FEF002C2223A1005E24AE /* StockCell.xib */,
+			);
+			path = StockCell;
+			sourceTree = "<group>";
+		};
 		44FEBB6C2C1E04E700562409 = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +168,7 @@
 		44FEBB772C1E04E700562409 /* Portfolio */ = {
 			isa = PBXGroup;
 			children = (
+				449FEEF12C22109D005E24AE /* MarketVC */,
 				44FEBB8E2C1F12D400562409 /* Resources */,
 				444822A72C1F1F270061B9E2 /* Design */,
 				444822B02C1F6B210061B9E2 /* Model */,
@@ -212,7 +265,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				449FEEFC2C222361005E24AE /* IndexCell.xib in Resources */,
 				44FEBBA52C1F130600562409 /* InterTight-ExtraBold.ttf in Resources */,
+				449FEF012C2223A1005E24AE /* StockCell.xib in Resources */,
 				44FEBBAF2C1F130600562409 /* InterTight-SemiBold.ttf in Resources */,
 				44FEBBAB2C1F130600562409 /* InterTight-ExtraLight.ttf in Resources */,
 				44FEBB822C1E04EA00562409 /* Assets.xcassets in Resources */,
@@ -223,6 +278,7 @@
 				444822AE2C1F25430061B9E2 /* MyStockCell.xib in Resources */,
 				44FEBBAE2C1F130600562409 /* InterTight-Medium.ttf in Resources */,
 				44FEBB8D2C1F12C000562409 /* market.json in Resources */,
+				449FEEF72C222151005E24AE /* MarketMoversCell.xib in Resources */,
 				44FEBBB22C1F130600562409 /* InterTight-Regular.ttf in Resources */,
 				44FEBBA72C1F130600562409 /* InterTight-Light.ttf in Resources */,
 			);
@@ -236,11 +292,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				44FEBB7D2C1E04E700562409 /* HomeViewController.swift in Sources */,
+				449FEEF82C222151005E24AE /* MarketMoversCell.swift in Sources */,
+				449FEEFD2C222361005E24AE /* IndexCell.swift in Sources */,
 				444822A92C1F1F500061B9E2 /* FontName.swift in Sources */,
+				449FEF022C2223A1005E24AE /* StockCell.swift in Sources */,
 				444822B22C1F6B9B0061B9E2 /* StockData.swift in Sources */,
 				44FEBB792C1E04E700562409 /* AppDelegate.swift in Sources */,
 				444822AD2C1F25430061B9E2 /* MyStockCell.swift in Sources */,
 				44FEBB7B2C1E04E700562409 /* SceneDelegate.swift in Sources */,
+				449FEEF32C2210C5005E24AE /* MarketViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

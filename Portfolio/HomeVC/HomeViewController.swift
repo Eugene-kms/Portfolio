@@ -45,7 +45,11 @@ class HomeViewController: UIViewController {
 //    }
 
     @IBAction func addNewStockButtonTapped(_ sender: Any) {
+        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MarketViewController") as! MarketViewController
         
+        viewController.modalPresentationStyle = .fullScreen
+        
+        self.present(viewController, animated: true)
     }
     
 }
