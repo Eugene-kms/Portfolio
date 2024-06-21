@@ -8,8 +8,9 @@ struct StockData {
     let stockValue: String
     let titlePrice: String
     let stockPrice: String
+    let priceChange: String
     
-    init(logoNameCompany: String, titleCompany: String, subtitleCompany: String, titleValue: String, stockValue: String, titlePrice: String, stockPrice: String) {
+    init(logoNameCompany: String, titleCompany: String, subtitleCompany: String, titleValue: String, stockValue: String, titlePrice: String, stockPrice: String, priceChange: String) {
         self.logoNameCompany = logoNameCompany
         self.titleCompany = titleCompany
         self.subtitleCompany = subtitleCompany
@@ -17,5 +18,6 @@ struct StockData {
         self.stockValue = stockValue
         self.titlePrice = titlePrice
         self.stockPrice = stockPrice
+        self.priceChange = priceChange
     }
 }

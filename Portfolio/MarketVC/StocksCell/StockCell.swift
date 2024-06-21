@@ -6,5 +6,9 @@ class StockCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+//    func configure(with viewModel: StockCellViewModel) {
+//        
+//    }
 
 }
