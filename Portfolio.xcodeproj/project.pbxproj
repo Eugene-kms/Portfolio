@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		443903692C2898250099E56B /* IndexCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443903672C2898240099E56B /* IndexCollectionViewCell.swift */; };
+		4439036A2C2898250099E56B /* IndexCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 443903682C2898250099E56B /* IndexCollectionViewCell.xib */; };
 		444822A92C1F1F500061B9E2 /* FontName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444822A82C1F1F500061B9E2 /* FontName.swift */; };
 		444822AD2C1F25430061B9E2 /* MyStockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444822AB2C1F25430061B9E2 /* MyStockCell.swift */; };
 		444822AE2C1F25430061B9E2 /* MyStockCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 444822AC2C1F25430061B9E2 /* MyStockCell.xib */; };
@@ -14,10 +16,6 @@
 		449FEEF32C2210C5005E24AE /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449FEEF22C2210C5005E24AE /* MarketViewController.swift */; };
 		449FEF012C2223A1005E24AE /* StockCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 449FEF002C2223A1005E24AE /* StockCell.xib */; };
 		449FEF022C2223A1005E24AE /* StockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449FEEFF2C2223A1005E24AE /* StockCell.swift */; };
-		449FEF052C235EA3005E24AE /* IndexCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 449FEF042C235EA3005E24AE /* IndexCollectionViewCell.xib */; };
-		449FEF062C235EA3005E24AE /* IndexCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449FEF032C235EA3005E24AE /* IndexCollectionViewCell.swift */; };
-		449FEF092C236A3C005E24AE /* IndexsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 449FEF082C236A3C005E24AE /* IndexsCell.xib */; };
-		449FEF0A2C236A3C005E24AE /* IndexsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449FEF072C236A3C005E24AE /* IndexsCell.swift */; };
 		44FEBB792C1E04E700562409 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FEBB782C1E04E700562409 /* AppDelegate.swift */; };
 		44FEBB7B2C1E04E700562409 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FEBB7A2C1E04E700562409 /* SceneDelegate.swift */; };
 		44FEBB7D2C1E04E700562409 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FEBB7C2C1E04E700562409 /* HomeViewController.swift */; };
@@ -36,6 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		443903672C2898240099E56B /* IndexCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexCollectionViewCell.swift; sourceTree = "<group>"; };
+		443903682C2898250099E56B /* IndexCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IndexCollectionViewCell.xib; sourceTree = "<group>"; };
 		444822A82C1F1F500061B9E2 /* FontName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontName.swift; sourceTree = "<group>"; };
 		444822AB2C1F25430061B9E2 /* MyStockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStockCell.swift; sourceTree = "<group>"; };
 		444822AC2C1F25430061B9E2 /* MyStockCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyStockCell.xib; sourceTree = "<group>"; };
@@ -43,10 +43,6 @@
 		449FEEF22C2210C5005E24AE /* MarketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
 		449FEEFF2C2223A1005E24AE /* StockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCell.swift; sourceTree = "<group>"; };
 		449FEF002C2223A1005E24AE /* StockCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StockCell.xib; sourceTree = "<group>"; };
-		449FEF032C235EA3005E24AE /* IndexCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexCollectionViewCell.swift; sourceTree = "<group>"; };
-		449FEF042C235EA3005E24AE /* IndexCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IndexCollectionViewCell.xib; sourceTree = "<group>"; };
-		449FEF072C236A3C005E24AE /* IndexsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexsCell.swift; sourceTree = "<group>"; };
-		449FEF082C236A3C005E24AE /* IndexsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IndexsCell.xib; sourceTree = "<group>"; };
 		44FEBB752C1E04E700562409 /* Portfolio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Portfolio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44FEBB782C1E04E700562409 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44FEBB7A2C1E04E700562409 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,15 +117,6 @@
 			path = MarketVC;
 			sourceTree = "<group>";
 		};
-		449FEEF92C22232F005E24AE /* IndexsShowCaseCell */ = {
-			isa = PBXGroup;
-			children = (
-				449FEF032C235EA3005E24AE /* IndexCollectionViewCell.swift */,
-				449FEF042C235EA3005E24AE /* IndexCollectionViewCell.xib */,
-			);
-			path = IndexsShowCaseCell;
-			sourceTree = "<group>";
-		};
 		449FEEFE2C22237D005E24AE /* StocksCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,9 +129,8 @@
 		449FEF0C2C247EF5005E24AE /* IndexsCell */ = {
 			isa = PBXGroup;
 			children = (
-				449FEEF92C22232F005E24AE /* IndexsShowCaseCell */,
-				449FEF072C236A3C005E24AE /* IndexsCell.swift */,
-				449FEF082C236A3C005E24AE /* IndexsCell.xib */,
+				443903672C2898240099E56B /* IndexCollectionViewCell.swift */,
+				443903682C2898250099E56B /* IndexCollectionViewCell.xib */,
 			);
 			path = IndexsCell;
 			sourceTree = "<group>";
@@ -271,12 +257,11 @@
 				44FEBBAB2C1F130600562409 /* InterTight-ExtraLight.ttf in Resources */,
 				44FEBB822C1E04EA00562409 /* Assets.xcassets in Resources */,
 				44FEBB852C1E04EA00562409 /* Base in Resources */,
-				449FEF052C235EA3005E24AE /* IndexCollectionViewCell.xib in Resources */,
 				44FEBBB32C1F130600562409 /* InterTight-Black.ttf in Resources */,
-				449FEF092C236A3C005E24AE /* IndexsCell.xib in Resources */,
 				44FEBBA82C1F130600562409 /* InterTight-Bold.ttf in Resources */,
 				44FEBB802C1E04E700562409 /* Base in Resources */,
 				444822AE2C1F25430061B9E2 /* MyStockCell.xib in Resources */,
+				4439036A2C2898250099E56B /* IndexCollectionViewCell.xib in Resources */,
 				44FEBBAE2C1F130600562409 /* InterTight-Medium.ttf in Resources */,
 				44FEBB8D2C1F12C000562409 /* market.json in Resources */,
 				44FEBBB22C1F130600562409 /* InterTight-Regular.ttf in Resources */,
@@ -292,12 +277,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				44FEBB7D2C1E04E700562409 /* HomeViewController.swift in Sources */,
-				449FEF0A2C236A3C005E24AE /* IndexsCell.swift in Sources */,
 				444822A92C1F1F500061B9E2 /* FontName.swift in Sources */,
+				443903692C2898250099E56B /* IndexCollectionViewCell.swift in Sources */,
 				449FEF022C2223A1005E24AE /* StockCell.swift in Sources */,
 				444822B22C1F6B9B0061B9E2 /* StockData.swift in Sources */,
 				44FEBB792C1E04E700562409 /* AppDelegate.swift in Sources */,
-				449FEF062C235EA3005E24AE /* IndexCollectionViewCell.swift in Sources */,
 				444822AD2C1F25430061B9E2 /* MyStockCell.swift in Sources */,
 				44FEBB7B2C1E04E700562409 /* SceneDelegate.swift in Sources */,
 				449FEEF32C2210C5005E24AE /* MarketViewController.swift in Sources */,

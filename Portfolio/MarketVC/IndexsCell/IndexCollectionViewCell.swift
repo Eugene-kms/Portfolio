@@ -12,6 +12,8 @@ class IndexCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         
         self.layer.cornerRadius = 10
+        self.layer.borderWidth = 1.0
+        self.layer.borderColor = UIColor.black.withAlphaComponent(0.10).cgColor    
     }
 
     func configure(_ index: StockData) {
