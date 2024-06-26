@@ -9,8 +9,9 @@ struct StockData {
     let titlePrice: String
     let stockPrice: String
     let priceChange: String
+    var graphData: [Double]
     
-    init(logoNameCompany: String, titleCompany: String, subtitleCompany: String, titleValue: String, stockValue: String, titlePrice: String, stockPrice: String, priceChange: String) {
+    init(logoNameCompany: String, titleCompany: String, subtitleCompany: String, titleValue: String, stockValue: String, titlePrice: String, stockPrice: String, priceChange: String, graphData: [Double]) {
         self.logoNameCompany = logoNameCompany
         self.titleCompany = titleCompany
         self.subtitleCompany = subtitleCompany
@@ -19,5 +20,6 @@ struct StockData {
         self.titlePrice = titlePrice
         self.stockPrice = stockPrice
         self.priceChange = priceChange
+        self.graphData = graphData
     }
 }

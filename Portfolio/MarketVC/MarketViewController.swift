@@ -20,7 +20,8 @@ class MarketViewController: UIViewController {
                 stockValue: "",
                 titlePrice: "",
                 stockPrice: "$34,326.46",
-                priceChange: "+49,50%"),
+                priceChange: "+49,50%",
+                graphData: Array(repeating: -1, count: 16).map { _ in Double.random(in: 120...160) } ),
             StockData(
                 logoNameCompany: "dowJones",
                 titleCompany: "Dow",
@@ -29,7 +30,8 @@ class MarketViewController: UIViewController {
                 stockValue: "",
                 titlePrice: "",
                 stockPrice: "$23,241.46",
-                priceChange: "+12,56%")]
+                priceChange: "+12,56%",
+                graphData: Array(repeating: -1, count: 16).map { _ in Double.random(in: 120...160) } )]
         
     let stocks: [StockData] = [
         StockData(
@@ -40,7 +42,8 @@ class MarketViewController: UIViewController {
             stockValue: "",
             titlePrice: "",
             stockPrice: "$142.65",
-            priceChange: "+ 0.81%")]
+            priceChange: "+ 0.81%",
+            graphData: Array(repeating: -1, count: 16).map { _ in Double.random(in: 120...160) } )]
     
     private func configureTableView() {
         indexsCollectionView.dataSource = self
@@ -69,10 +72,9 @@ extension MarketViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "IndexCollectionViewCell", for: indexPath) as! IndexCollectionViewCell
-        
         let previewDetail = indexs[indexPath.row]
-        cell.configure(previewDetail)
         
+        cell.configure(previewDetail)
         
         return cell
     }
@@ -108,16 +110,8 @@ extension MarketViewController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "StockCell") as! StockCell
         let previewDetail = stocks[indexPath.row]
+        
         cell.configure(previewDetail)
-        
-        return cell
-    }
-    
-    func configureDataLineGraph(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "StockCell") as! StockCell
-        
-        let data = Array(repeating: -1, count: 16).map { _ in Double.random(in: 120...160) }
-        cell.configureLineGraph(with: data)
         
         return cell
     }

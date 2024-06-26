@@ -13,8 +13,7 @@ class StockCell: UITableViewCell {
         super.awakeFromNib()
         
         configureFont()
-        
-//        lineGraph.lineColor = .red
+ 
         self.selectionStyle = .none
     }
     
@@ -24,10 +23,7 @@ class StockCell: UITableViewCell {
         titleCompany.text = data.subtitleCompany
         priceStock.text = data.stockPrice
         changePrice.text = data.priceChange
-    }
-    
-    func configureLineGraph(with data: [Double]) {
-        lineGraph.data = data
+        lineGraph.data = data.graphData
     }
 
     private func configureFont() {

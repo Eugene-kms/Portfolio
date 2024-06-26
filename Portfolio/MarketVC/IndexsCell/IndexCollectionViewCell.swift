@@ -7,6 +7,8 @@ class IndexCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var subtitleIndex: UILabel!
     @IBOutlet weak var priceIndex: UILabel!
     @IBOutlet weak var priceChange: UILabel!
+    @IBOutlet weak var lineGraph: LineGraphView!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,6 +26,7 @@ class IndexCollectionViewCell: UICollectionViewCell {
         subtitleIndex.text = index.subtitleCompany
         priceIndex.text = index.stockPrice
         priceChange.text = index.priceChange
+        lineGraph.data = index.graphData
     }
     
     private func configureFont() {

@@ -16,7 +16,8 @@ class HomeViewController: UIViewController {
         stockValue: "$7,666.23",
         titlePrice: "Stock Price",
         stockPrice: "$2,111.03",
-        priceChange: ""),
+        priceChange: "",
+        graphData: []),
     StockData(
         logoNameCompany: "axcelis",
         titleCompany: "ACLS",
@@ -25,7 +26,8 @@ class HomeViewController: UIViewController {
         stockValue: "$6,000.23",
         titlePrice: "Stock Price",
         stockPrice: "$647.43",
-        priceChange: "")]
+        priceChange: "",
+        graphData: [])]
     
     override func viewDidLoad() {
         super.viewDidLoad()
