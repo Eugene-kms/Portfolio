@@ -49,25 +49,25 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eO1-HY-CAM" customClass="LineGraphView" customModule="Portfolio" customModuleProvider="target">
-                        <rect key="frame" x="150" y="0.0" width="73" height="40"/>
+                        <rect key="frame" x="120" y="0.0" width="110" height="40"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstAttribute="width" constant="110" id="UOk-6Y-o4d"/>
                             <constraint firstAttribute="height" constant="40" id="miL-va-kvP"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="QVu-cg-UCt" firstAttribute="leading" secondItem="GNl-lA-Wus" secondAttribute="trailing" constant="12" id="4wj-GE-wW1"/>
-                    <constraint firstItem="eO1-HY-CAM" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="9KP-i9-iKF"/>
                     <constraint firstItem="GNl-lA-Wus" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="BXD-eU-Hfe"/>
                     <constraint firstItem="G5M-k9-gcU" firstAttribute="leading" secondItem="GNl-lA-Wus" secondAttribute="trailing" constant="12" id="Cf1-J6-5Wi"/>
+                    <constraint firstAttribute="trailing" secondItem="eO1-HY-CAM" secondAttribute="trailing" constant="90" id="DzP-YC-xYu"/>
                     <constraint firstItem="quO-cB-voo" firstAttribute="top" secondItem="9vc-9f-idQ" secondAttribute="bottom" constant="4" id="Ego-zH-nWr"/>
                     <constraint firstAttribute="trailing" secondItem="9vc-9f-idQ" secondAttribute="trailing" constant="16" id="GR8-iP-vh1"/>
-                    <constraint firstItem="eO1-HY-CAM" firstAttribute="leading" secondItem="G5M-k9-gcU" secondAttribute="trailing" constant="33" id="HKX-Z9-tLk"/>
                     <constraint firstAttribute="trailing" secondItem="quO-cB-voo" secondAttribute="trailing" constant="16" id="MBU-Q2-Bg4"/>
                     <constraint firstItem="G5M-k9-gcU" firstAttribute="top" secondItem="QVu-cg-UCt" secondAttribute="bottom" constant="4" id="aBL-1A-It5"/>
                     <constraint firstItem="QVu-cg-UCt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="c40-IU-e9i"/>
-                    <constraint firstItem="9vc-9f-idQ" firstAttribute="leading" secondItem="eO1-HY-CAM" secondAttribute="trailing" constant="23" id="fQG-eJ-SeA"/>
+                    <constraint firstItem="eO1-HY-CAM" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="eRe-RB-fUe"/>
                     <constraint firstItem="GNl-lA-Wus" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="irM-wg-zen"/>
                     <constraint firstItem="9vc-9f-idQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="ka5-Pa-5L8"/>
                 </constraints>

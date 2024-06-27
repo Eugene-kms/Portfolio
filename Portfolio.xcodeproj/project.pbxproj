@@ -14,6 +14,9 @@
 		444822AE2C1F25430061B9E2 /* MyStockCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 444822AC2C1F25430061B9E2 /* MyStockCell.xib */; };
 		444822B22C1F6B9B0061B9E2 /* StockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444822B12C1F6B9B0061B9E2 /* StockData.swift */; };
 		44548B432C2A07D600107FA7 /* LineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44548B422C2A07D600107FA7 /* LineGraphView.swift */; };
+		44548B462C2C8E3D00107FA7 /* StockDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44548B452C2C8E3D00107FA7 /* StockDataRepository.swift */; };
+		44548B482C2C963400107FA7 /* StockDataDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44548B472C2C963400107FA7 /* StockDataDTO.swift */; };
+		44548B4A2C2CAD4300107FA7 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44548B492C2CAD4300107FA7 /* HomeViewModel.swift */; };
 		449FEEF32C2210C5005E24AE /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449FEEF22C2210C5005E24AE /* MarketViewController.swift */; };
 		449FEF012C2223A1005E24AE /* StockCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 449FEF002C2223A1005E24AE /* StockCell.xib */; };
 		449FEF022C2223A1005E24AE /* StockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449FEEFF2C2223A1005E24AE /* StockCell.swift */; };
@@ -42,6 +45,9 @@
 		444822AC2C1F25430061B9E2 /* MyStockCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyStockCell.xib; sourceTree = "<group>"; };
 		444822B12C1F6B9B0061B9E2 /* StockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockData.swift; sourceTree = "<group>"; };
 		44548B422C2A07D600107FA7 /* LineGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineGraphView.swift; sourceTree = "<group>"; };
+		44548B452C2C8E3D00107FA7 /* StockDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDataRepository.swift; sourceTree = "<group>"; };
+		44548B472C2C963400107FA7 /* StockDataDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDataDTO.swift; sourceTree = "<group>"; };
+		44548B492C2CAD4300107FA7 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		449FEEF22C2210C5005E24AE /* MarketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
 		449FEEFF2C2223A1005E24AE /* StockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCell.swift; sourceTree = "<group>"; };
 		449FEF002C2223A1005E24AE /* StockCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StockCell.xib; sourceTree = "<group>"; };
@@ -88,6 +94,7 @@
 			children = (
 				444822AF2C1F25650061B9E2 /* MyStockCell */,
 				44FEBB7C2C1E04E700562409 /* HomeViewController.swift */,
+				44548B492C2CAD4300107FA7 /* HomeViewModel.swift */,
 			);
 			path = HomeVC;
 			sourceTree = "<group>";
@@ -105,8 +112,17 @@
 			isa = PBXGroup;
 			children = (
 				444822B12C1F6B9B0061B9E2 /* StockData.swift */,
+				44548B472C2C963400107FA7 /* StockDataDTO.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		44548B442C2C8E0600107FA7 /* Netwoarking */ = {
+			isa = PBXGroup;
+			children = (
+				44548B452C2C8E3D00107FA7 /* StockDataRepository.swift */,
+			);
+			path = Netwoarking;
 			sourceTree = "<group>";
 		};
 		449FEEF12C22109D005E24AE /* MarketVC */ = {
@@ -157,6 +173,7 @@
 		44FEBB772C1E04E700562409 /* Portfolio */ = {
 			isa = PBXGroup;
 			children = (
+				44548B442C2C8E0600107FA7 /* Netwoarking */,
 				44FEBB8E2C1F12D400562409 /* Resources */,
 				444822A72C1F1F270061B9E2 /* Design */,
 				444822B02C1F6B210061B9E2 /* Model */,
@@ -280,11 +297,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				44FEBB7D2C1E04E700562409 /* HomeViewController.swift in Sources */,
+				44548B462C2C8E3D00107FA7 /* StockDataRepository.swift in Sources */,
 				444822A92C1F1F500061B9E2 /* FontName.swift in Sources */,
 				443903692C2898250099E56B /* IndexCollectionViewCell.swift in Sources */,
 				449FEF022C2223A1005E24AE /* StockCell.swift in Sources */,
 				444822B22C1F6B9B0061B9E2 /* StockData.swift in Sources */,
+				44548B482C2C963400107FA7 /* StockDataDTO.swift in Sources */,
 				44FEBB792C1E04E700562409 /* AppDelegate.swift in Sources */,
+				44548B4A2C2CAD4300107FA7 /* HomeViewModel.swift in Sources */,
 				44548B432C2A07D600107FA7 /* LineGraphView.swift in Sources */,
 				444822AD2C1F25430061B9E2 /* MyStockCell.swift in Sources */,
 				44FEBB7B2C1E04E700562409 /* SceneDelegate.swift in Sources */,

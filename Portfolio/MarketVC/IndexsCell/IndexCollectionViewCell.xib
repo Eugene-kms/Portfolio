@@ -34,7 +34,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$34,326.46" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eg-2o-27z">
-                                <rect key="frame" x="16" y="90" width="76" height="17"/>
+                                <rect key="frame" x="16" y="90" width="80" height="17"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -64,7 +64,6 @@
                         <constraints>
                             <constraint firstItem="KhH-DW-K3R" firstAttribute="leading" secondItem="Bis-3K-dJo" secondAttribute="leading" constant="16" id="6Ze-SK-mYn"/>
                             <constraint firstItem="KhH-DW-K3R" firstAttribute="top" secondItem="4eg-2o-27z" secondAttribute="bottom" constant="4" id="71T-Nc-fVo"/>
-                            <constraint firstItem="a8b-ll-4Gl" firstAttribute="leading" secondItem="4eg-2o-27z" secondAttribute="trailing" constant="31" id="Aju-TM-VI4"/>
                             <constraint firstItem="dpY-rk-yHJ" firstAttribute="top" secondItem="ZGa-J6-zZG" secondAttribute="bottom" id="D2H-5t-YTC"/>
                             <constraint firstAttribute="trailing" secondItem="a8b-ll-4Gl" secondAttribute="trailing" id="FVh-XS-lZ0"/>
                             <constraint firstItem="ZGa-J6-zZG" firstAttribute="leading" secondItem="VVd-vM-cEh" secondAttribute="trailing" constant="8" id="N5Z-e4-zrc"/>

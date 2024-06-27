@@ -9,41 +9,11 @@ class MarketViewController: UIViewController {
         super.viewDidLoad()
         
         configureTableView()
+        loadStockData()
     }
         
-    let indexs: [StockData] = [
-            StockData(
-                logoNameCompany: "s&p500",
-                titleCompany: "S&P 500",
-                subtitleCompany: "Standard & Poor’s",
-                titleValue: "",
-                stockValue: "",
-                titlePrice: "",
-                stockPrice: "$34,326.46",
-                priceChange: "+49,50%",
-                graphData: Array(repeating: -1, count: 16).map { _ in Double.random(in: 120...160) } ),
-            StockData(
-                logoNameCompany: "dowJones",
-                titleCompany: "Dow",
-                subtitleCompany: "Dow Jones",
-                titleValue: "",
-                stockValue: "",
-                titlePrice: "",
-                stockPrice: "$23,241.46",
-                priceChange: "+12,56%",
-                graphData: Array(repeating: -1, count: 16).map { _ in Double.random(in: 120...160) } )]
-        
-    let stocks: [StockData] = [
-        StockData(
-            logoNameCompany: "apple",
-            titleCompany: "AAPL",
-            subtitleCompany: "Apple, Inc",
-            titleValue: "",
-            stockValue: "",
-            titlePrice: "",
-            stockPrice: "$142.65",
-            priceChange: "+ 0.81%",
-            graphData: Array(repeating: -1, count: 16).map { _ in Double.random(in: 120...160) } )]
+    var indexs: [StockData] = []
+    var stocks: [StockData] = []
     
     private func configureTableView() {
         indexsCollectionView.dataSource = self
@@ -52,6 +22,46 @@ class MarketViewController: UIViewController {
         stockTableView.delegate = self
         indexsCollectionView.register(UINib(nibName: "IndexCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "IndexCollectionViewCell")
         stockTableView.register(UINib(nibName: "StockCell", bundle: nil), forCellReuseIdentifier: "StockCell")
+    }
+    
+    private func loadStockData() {
+        
+        let repository = StockDataRepository()
+        
+        repository.loadMarket { [weak self] data in
+            guard let self = self, let data = data else { return }
+            
+            self.indexs = data.filter { $0.type == "index" }.sorted(by: { $0.name < $1.name }).map { dto in
+                StockData(
+                    logoNameCompany: dto.symbol,
+                    titleCompany: dto.symbol,
+                    subtitleCompany: dto.name,
+                    titleValue: "",
+                    stockValue: "\(dto.price)",
+                    titlePrice: "",
+                    stockPrice: "",
+                    priceChange: "\(dto.change.last?.close ?? 0)",
+                    graphData: dto.change.map { Double ($0.close) })
+            }
+            
+            self.stocks = data.filter { $0.type == "stock" }.sorted(by: { $0.name < $1.name }).map { dto in
+                StockData(
+                    logoNameCompany: dto.symbol,
+                    titleCompany: dto.symbol,
+                    subtitleCompany: dto.name,
+                    titleValue: "",
+                    stockValue: "\(dto.price)",
+                    titlePrice: "",
+                    stockPrice: "",
+                    priceChange: "\(dto.change.last?.close ?? 0)",
+                    graphData: dto.change.map { Double ($0.close) })
+            }
+            
+            DispatchQueue.main.async {
+                self.indexsCollectionView.reloadData()
+                self.stockTableView.reloadData()
+            }
+        }
     }
     
     @IBAction func searchButtonTapped(_ sender: Any) {
