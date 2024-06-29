@@ -32,29 +32,11 @@ class MarketViewController: UIViewController {
             guard let self = self, let data = data else { return }
             
             self.indexs = data.filter { $0.type == "index" }.sorted(by: { $0.name < $1.name }).map { dto in
-                StockData(
-                    logoNameCompany: dto.symbol,
-                    titleCompany: dto.symbol,
-                    subtitleCompany: dto.name,
-                    titleValue: "",
-                    stockValue: "\(dto.price)",
-                    titlePrice: "",
-                    stockPrice: "",
-                    priceChange: "\(dto.change.last?.close ?? 0)",
-                    graphData: dto.change.map { Double ($0.close) })
+                dto.toDomain()
             }
             
             self.stocks = data.filter { $0.type == "stock" }.sorted(by: { $0.name < $1.name }).map { dto in
-                StockData(
-                    logoNameCompany: dto.symbol,
-                    titleCompany: dto.symbol,
-                    subtitleCompany: dto.name,
-                    titleValue: "",
-                    stockValue: "\(dto.price)",
-                    titlePrice: "",
-                    stockPrice: "",
-                    priceChange: "\(dto.change.last?.close ?? 0)",
-                    graphData: dto.change.map { Double ($0.close) })
+                dto.toDomain()
             }
             
             DispatchQueue.main.async {

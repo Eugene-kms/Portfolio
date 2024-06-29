@@ -25,8 +25,13 @@ class IndexCollectionViewCell: UICollectionViewCell {
         titleIndex.text = index.titleCompany
         subtitleIndex.text = index.subtitleCompany
         priceIndex.text = index.stockPrice
-        priceChange.text = index.priceChange
+        priceChange.text = index.percentageChange
         lineGraph.data = index.graphData
+        
+        lineGraph.lineColor = index.isPriceUp ? UIColor(named: "greenColorFigma")! : .red
+        
+        guard index.isChangePositive else { return priceChange.textColor = .red }
+        priceChange.textColor = UIColor(named: "greenColorFigma")!
     }
     
     private func configureFont() {
