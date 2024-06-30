@@ -44,9 +44,9 @@ extension StockDataDTO {
             logoNameCompany: self.symbol,
             titleCompany: self.symbol,
             subtitleCompany: self.name,
-            titleValue: "Title Value",
+            titleValue: "",
             stockValue: "\(currentPrice)",
-            titlePrice: "Title Price",
+            titlePrice: "",
             stockPrice: "\(currentPrice)",
             percentageChange: String(format: "%@%.2f%%", percentageChange >= 0 ? "+" : "", percentageChange),
             graphData: self.change.map { Double ($0.close) })

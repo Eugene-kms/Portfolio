@@ -1,6 +1,6 @@
 import Foundation
 
-struct StockData {
+struct StockData: Codable {
     let logoNameCompany: String
     let titleCompany: String
     let subtitleCompany: String

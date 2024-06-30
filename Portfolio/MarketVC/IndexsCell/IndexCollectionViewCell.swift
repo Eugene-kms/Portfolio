@@ -24,7 +24,7 @@ class IndexCollectionViewCell: UICollectionViewCell {
         logoIndex.image = UIImage(named: index.logoNameCompany)
         titleIndex.text = index.titleCompany
         subtitleIndex.text = index.subtitleCompany
-        priceIndex.text = index.stockPrice
+        priceIndex.text = "$" + index.stockPrice
         priceChange.text = index.percentageChange
         lineGraph.data = index.graphData
         

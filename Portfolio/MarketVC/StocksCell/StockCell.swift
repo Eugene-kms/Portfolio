@@ -21,7 +21,7 @@ class StockCell: UITableViewCell {
         logoCompany.image = UIImage(named: data.logoNameCompany)
         tickerCompany.text = data.titleCompany
         titleCompany.text = data.subtitleCompany
-        priceStock.text = data.stockPrice
+        priceStock.text = "$" + data.stockPrice
         changePrice.text = data.percentageChange
         lineGraph.data = data.graphData
         

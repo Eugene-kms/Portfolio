@@ -53,6 +53,16 @@ class MarketViewController: UIViewController {
         dismiss(animated: true)
     }
     
+    private func presentBuy(for stock: StockData) {
+        
+        if let buyViewController = storyboard?.instantiateViewController(withIdentifier: "BuyViewController") as? BuyViewController {
+          
+            buyViewController.selectedStock = stock
+            buyViewController.modalPresentationStyle = .fullScreen
+            
+            present(buyViewController, animated: true)
+        }
+    }
 }
 
 extension MarketViewController: UICollectionViewDataSource {
@@ -74,7 +84,11 @@ extension MarketViewController: UICollectionViewDataSource {
 
 extension MarketViewController: UICollectionViewDelegate {
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let selectedIndex = indexs[indexPath.row]
+        presentBuy(for: selectedIndex)
+    }
 }
 
 extension MarketViewController: UICollectionViewDelegateFlowLayout {
@@ -115,6 +129,10 @@ extension MarketViewController: UITableViewDataSource {
 
 extension MarketViewController: UITableViewDelegate {
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let selectedStocks = stocks[indexPath.row]
+        presentBuy(for: selectedStocks)
+    }
 }
 

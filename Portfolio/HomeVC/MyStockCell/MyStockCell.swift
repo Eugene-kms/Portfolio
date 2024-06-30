@@ -22,10 +22,10 @@ class MyStockCell: UITableViewCell {
         logoCompany.image = UIImage(named: stockData.logoNameCompany)
         titleCompany.text = stockData.titleCompany
         subtitleCompany.text = stockData.subtitleCompany
-        titleValue.text = stockData.titleValue
-        subtitleValue.text = stockData.stockValue
-        titleStockPrice.text = stockData.titlePrice
-        subtitlePrice.text = stockData.stockPrice
+        titleValue.text = "Portfolio value"
+        subtitleValue.text = "$" + stockData.stockValue
+        titleStockPrice.text = "Stock Price"
+        subtitlePrice.text = "$" + stockData.stockPrice
     }
     
     private func configureCell() {

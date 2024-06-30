@@ -7,32 +7,18 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addNewStockButton: UIButton!
     
-    var stocksData: [StockData] = [
-    StockData(
-        logoNameCompany: "microsoft",
-        titleCompany: "MSFT",
-        subtitleCompany: "Microsoft Corporations",
-        titleValue: "Portfolio value",
-        stockValue: "$7,666.23",
-        titlePrice: "Stock Price",
-        stockPrice: "$2,111.03",
-        percentageChange: "",
-        graphData: []),
-    StockData(
-        logoNameCompany: "axcelis",
-        titleCompany: "ACLS",
-        subtitleCompany: "Axcelis Technologies, Inc",
-        titleValue: "Portfolio value",
-        stockValue: "$6,000.23",
-        titlePrice: "Stock Price",
-        stockPrice: "$647.43",
-        percentageChange: "",
-        graphData: [])]
+    var savedStocks: [StockData] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configure()
+        loadPortfolio()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadPortfolio()
     }
     
     private func configure() {
@@ -42,11 +28,14 @@ class HomeViewController: UIViewController {
         tableView.separatorStyle = .none
     }
     
-//    func present(with stocks: StockData) {
-//        let homeViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-//        
-//        present(homeViewController, animated: true)
-//    }
+    private func loadPortfolio() {
+        
+        if let data = UserDefaults.standard.data(forKey: "portfolio"),
+            let portfolio = try? JSONDecoder().decode([StockData].self, from: data) {
+            self.savedStocks = portfolio
+                tableView.reloadData()
+        }
+    }
 
     @IBAction func addNewStockButtonTapped(_ sender: Any) {
         let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MarketViewController") as! MarketViewController
@@ -55,20 +44,19 @@ class HomeViewController: UIViewController {
         
         self.present(viewController, animated: true)
     }
-    
 }
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        stocksData.count
+        savedStocks.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MyStockCell") as? MyStockCell else { return UITableViewCell() }
         
-        let stockData = stocksData[indexPath.row]
+        let stockData = savedStocks[indexPath.row]
         
         cell.configure(with: stockData)
         
@@ -87,9 +75,14 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         return 10
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        
-//        let stockData = stocksData[indexPath.row]
-//        present(with: stockData)
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let sellViewController = storyboard?.instantiateViewController(withIdentifier: "SellViewController") as? SellViewController else { return }
+        
+        let stock = savedStocks[indexPath.row]
+        sellViewController.selectedStock = stock
+        sellViewController.modalPresentationStyle = .fullScreen
+        
+        present(sellViewController, animated: true)
+    }
 }
