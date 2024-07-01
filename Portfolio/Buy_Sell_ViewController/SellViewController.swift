@@ -38,6 +38,8 @@ class SellViewController: UIViewController {
         NSLayoutConstraint.activate([
             textField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             textField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)])
+        
+        textField.keyboardType = .decimalPad
     }
     
     @objc func hideKeyboard() {
@@ -75,8 +77,17 @@ class SellViewController: UIViewController {
     @IBAction func confirmButtonTapped(_ sender: Any) {
         
         guard let stock = selectedStock else { return }
-            removeStockFromPortfolio(stock)
-            dismiss(animated: true)
+            
+        StockDataRepository().removeStockFromPortfolio(stock) { success in
+            DispatchQueue.main.async {
+                if success {
+                    self.removeStockFromPortfolio(stock)
+                    self.dismiss(animated: true)
+                } else {
+                    print("Doesn't REMOVE stocks to portfolio")
+                }
+            }
+        }
     }
     
     private func removeStockFromPortfolio(_ stock: StockData) {
@@ -123,13 +134,13 @@ extension SellViewController: UITextFieldDelegate {
             return true
         }
         
-        let allowedCharacters = CharacterSet(charactersIn: "0123456789.")
+        let allowedCharacters = CharacterSet(charactersIn: "0123456789,")
         let characterSet = CharacterSet(charactersIn: string)
         if !allowedCharacters.isSuperset(of: characterSet) {
             return false
         }
         
-        if string == "." && textField.text?.contains(".") == true {
+        if string == "," && textField.text?.contains(",") == true {
             return false
         }
         
@@ -137,7 +148,7 @@ extension SellViewController: UITextFieldDelegate {
         let updatedText = (currentText as NSString).replacingCharacters(in: range, with: string)
         let newText = updatedText.hasPrefix("$") ? updatedText : "$" + updatedText
         
-        if let dotIndex = updatedText.firstIndex(of: ".") {
+        if let dotIndex = updatedText.firstIndex(of: ",") {
             let afterDotIndex = updatedText.index(after: dotIndex)
             let fractionalPart = updatedText[afterDotIndex...]
             if fractionalPart.count > 2 {

@@ -41,6 +41,8 @@ class BuyViewController: UIViewController {
         NSLayoutConstraint.activate([
             textField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             textField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)])
+        
+        textField.keyboardType = .decimalPad
     }
     
     @objc func hideKeyboard() {
@@ -78,16 +80,25 @@ class BuyViewController: UIViewController {
         
         let alert = UIAlertController(
             title: "Please confirm purchase",
-            message: "You’re buying \(String(describing: selectedStock?.subtitleCompany))) at $\(String(describing: selectedStock?.stockPrice)))) per share for the amount of $\(String(describing: textField)).",
+            message: "You’re buying \(selectedStock?.subtitleCompany ?? "Unknown company") at $\(selectedStock?.stockPrice ?? "Unknown price") per share for the amount of \(textField.text ?? "$0.00").",
             preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(
                 title: "Confirm",
                 style: .default,
-                handler: { _ in 
+                handler: { _ in
                     guard let stock = self.selectedStock else { return }
-                    self.addStockInPortfolio(stock)
-                    self.dismiss(animated: true)}))
+                    StockDataRepository().addStockToPortfolio(stock) { success in
+                        if success {
+                            self.addStockInPortfolio(stock)
+                            DispatchQueue.main.async {
+                                self.dismiss(animated: true)
+                            }
+                        } else {
+                            print("Doesn't ADD stocks to portfolio")
+                        }
+                    }
+                }))
         
         alert.addAction(UIAlertAction(
                 title: "Cancel",
@@ -139,13 +150,13 @@ extension BuyViewController: UITextFieldDelegate {
             return true
         }
         
-        let allowedCharacters = CharacterSet(charactersIn: "0123456789.")
+        let allowedCharacters = CharacterSet(charactersIn: "0123456789,")
         let characterSet = CharacterSet(charactersIn: string)
         if !allowedCharacters.isSuperset(of: characterSet) {
             return false
         }
         
-        if string == "." && textField.text?.contains(".") == true {
+        if string == "," && textField.text?.contains(",") == true {
             return false
         }
         
@@ -153,7 +164,7 @@ extension BuyViewController: UITextFieldDelegate {
         let updatedText = (currentText as NSString).replacingCharacters(in: range, with: string)
         let newText = updatedText.hasPrefix("$") ? updatedText : "$" + updatedText
         
-        if let dotIndex = updatedText.firstIndex(of: ".") {
+        if let dotIndex = updatedText.firstIndex(of: ",") {
             let afterDotIndex = updatedText.index(after: dotIndex)
             let fractionalPart = updatedText[afterDotIndex...]
             if fractionalPart.count > 2 {

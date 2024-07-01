@@ -7,13 +7,14 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addNewStockButton: UIButton!
     
-    var savedStocks: [StockData] = []
+    private var portfolio: [StockData] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configure()
         loadPortfolio()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,11 +31,26 @@ class HomeViewController: UIViewController {
     
     private func loadPortfolio() {
         
-        if let data = UserDefaults.standard.data(forKey: "portfolio"),
-            let portfolio = try? JSONDecoder().decode([StockData].self, from: data) {
-            self.savedStocks = portfolio
-                tableView.reloadData()
+        guard let url = URL(string: "https://portfolio-4fdba-default-rtdb.europe-west1.firebasedatabase.app/portfolio.json") else { return }
+        
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            guard error == nil, let data = data else {
+                print("Error loading portfolio: \(error?.localizedDescription ?? "Uknown error")")
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let portfolioData = try decoder.decode([String: StockData].self, from: data)
+                self.portfolio = Array(portfolioData.values)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            } catch {
+                print("Decoding error: \(error)")
+            }
         }
+        task.resume()
     }
 
     @IBAction func addNewStockButtonTapped(_ sender: Any) {
@@ -49,14 +65,14 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        savedStocks.count
+        portfolio.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MyStockCell") as? MyStockCell else { return UITableViewCell() }
         
-        let stockData = savedStocks[indexPath.row]
+        let stockData = portfolio[indexPath.row]
         
         cell.configure(with: stockData)
         
@@ -79,7 +95,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         
         guard let sellViewController = storyboard?.instantiateViewController(withIdentifier: "SellViewController") as? SellViewController else { return }
         
-        let stock = savedStocks[indexPath.row]
+        let stock = portfolio[indexPath.row]
         sellViewController.selectedStock = stock
         sellViewController.modalPresentationStyle = .fullScreen
         
