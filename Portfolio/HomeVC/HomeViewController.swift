@@ -13,12 +13,11 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         configure()
-        loadPortfolio()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         loadPortfolio()
     }
     
@@ -33,9 +32,9 @@ class HomeViewController: UIViewController {
         
         guard let url = URL(string: "https://portfolio-4fdba-default-rtdb.europe-west1.firebasedatabase.app/portfolio.json") else { return }
         
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
             guard error == nil, let data = data else {
-                print("Error loading portfolio: \(error?.localizedDescription ?? "Uknown error")")
+                print("Error loadPortfolio()-1: \(error?.localizedDescription ?? "Uknown error")")
                 return
             }
             
@@ -47,7 +46,12 @@ class HomeViewController: UIViewController {
                     self.tableView.reloadData()
                 }
             } catch {
-                print("Decoding error: \(error)")
+                self.portfolio = []
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+                
+                print("Error loadPortfolio()-2: \(error)")
             }
         }
         task.resume()

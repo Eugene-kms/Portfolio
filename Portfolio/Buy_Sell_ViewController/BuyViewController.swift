@@ -17,6 +17,8 @@ class BuyViewController: UIViewController {
     
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet weak var bottomLineConfirmButton: NSLayoutConstraint!
+    
     
     var selectedStock: StockData?
     
@@ -30,6 +32,13 @@ class BuyViewController: UIViewController {
         if let data = selectedStock {
             configure(data)
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWiilShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     private func configureTextField() {
@@ -78,33 +87,75 @@ class BuyViewController: UIViewController {
     
     @IBAction func confirmButtonTapped(_ sender: Any) {
         
+        guard
+                let stock = selectedStock,
+                let inputText = textField.text,
+                let amount = Double(inputText.replacingOccurrences(of: "$", with: "").trimmingCharacters(in: .whitespaces)),
+                amount >= Double(stock.stockPrice)! else {
+            
+            let alert = UIAlertController(
+                title: "Invalid Amount",
+                message: "Please enter an amount greater than the stock price.",
+                preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(
+                title: "Cancel",
+                style: .cancel))
+            
+            self.present(alert, animated: true)
+            
+            return
+        }
+        
         let alert = UIAlertController(
             title: "Please confirm purchase",
             message: "You’re buying \(selectedStock?.subtitleCompany ?? "Unknown company") at $\(selectedStock?.stockPrice ?? "Unknown price") per share for the amount of \(textField.text ?? "$0.00").",
             preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(
-                title: "Confirm",
-                style: .default,
-                handler: { _ in
-                    guard let stock = self.selectedStock else { return }
-                    StockDataRepository().addStockToPortfolio(stock) { success in
-                        if success {
-                            self.addStockInPortfolio(stock)
-                            DispatchQueue.main.async {
-                                self.dismiss(animated: true)
-                            }
-                        } else {
-                            print("Doesn't ADD stocks to portfolio")
+            title: "Confirm",
+            style: .default,
+            handler: { _ in
+                guard let stock = self.selectedStock else { return }
+                StockDataRepository().addStockToPortfolio(stock) { success in
+                    if success {
+                        self.addStockInPortfolio(stock)
+                        DispatchQueue.main.async {
+                            self.dismiss(animated: true)
                         }
+                    } else {
+                        print("Doesn't ADD stocks to portfolio")
                     }
-                }))
+                }
+            }))
         
         alert.addAction(UIAlertAction(
-                title: "Cancel",
-                style: .cancel))
+            title: "Cancel",
+            style: .cancel))
         
         self.present(alert, animated: true)
+    }
+    
+    @objc func keyboardWiilShow(notification: NSNotification) {
+        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
+            let keyboardHeight = keyboardFrame.height
+            adjustButtonPosition(up: true, height: keyboardHeight)
+        }
+    }
+    
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        adjustButtonPosition(up: false, height: 0)
+    }
+    
+    func adjustButtonPosition(up: Bool, height: CGFloat) {
+        
+        let buttomPadding: CGFloat = 5.0
+        bottomLineConfirmButton.constant = up ? height + buttomPadding : buttomPadding
+        
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
     }
     
     private func addStockInPortfolio(_ stock: StockData) {

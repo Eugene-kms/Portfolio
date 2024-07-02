@@ -222,17 +222,18 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="D7E-jm-hab"/>
                                 </constraints>
-                                <color key="tintColor" red="0.34901960780000002" green="0.33333333329999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" name="AccentColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Confirm" cornerStyle="large">
                                     <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="14"/>
+                                    <color key="baseBackgroundColor" red="0.34901960784313724" green="0.33333333333333331" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="confirmButtonTapped:" destination="8OB-Qb-ldT" eventType="touchUpInside" id="cm9-YU-L25"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="$0.00" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fn8-U1-Ipf">
-                                <rect key="frame" x="129.66666666666669" y="448" width="133.66666666666669" height="58"/>
+                                <rect key="frame" x="129.66666666666669" y="394.66666666666669" width="133.66666666666669" height="58"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="58" id="gzR-ig-yBA"/>
                                 </constraints>
@@ -241,13 +242,13 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter a Stock Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3gB-3q-7ly">
-                                <rect key="frame" x="113.66666666666669" y="358.33333333333331" width="166" height="21"/>
+                                <rect key="frame" x="113.66666666666669" y="305" width="166" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose the amount of stocks  you want to buy" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I4X-AK-xBd">
-                                <rect key="frame" x="113.66666666666667" y="387.33333333333331" width="165.66666666666663" height="28.666666666666686"/>
+                                <rect key="frame" x="113.66666666666667" y="334" width="165.66666666666663" height="28.666666666666686"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.40000000000000002" green="0.42745098039215684" blue="0.50196078431372548" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -302,10 +303,10 @@
                             <constraint firstItem="WHV-11-3AR" firstAttribute="trailing" secondItem="N1v-ZM-lwY" secondAttribute="trailing" constant="16" id="8se-3Z-aLk"/>
                             <constraint firstItem="WHV-11-3AR" firstAttribute="bottom" secondItem="N1v-ZM-lwY" secondAttribute="bottom" constant="10" id="AKj-Dl-SiQ"/>
                             <constraint firstItem="I4X-AK-xBd" firstAttribute="centerX" secondItem="Aqa-71-5dL" secondAttribute="centerX" id="Cwl-4w-mer"/>
-                            <constraint firstItem="N1v-ZM-lwY" firstAttribute="top" secondItem="fn8-U1-Ipf" secondAttribute="bottom" constant="250" id="DW7-Jx-Hdr"/>
                             <constraint firstItem="gqa-jY-a5l" firstAttribute="top" secondItem="WHV-11-3AR" secondAttribute="top" id="Dky-0p-O7v"/>
                             <constraint firstItem="WHV-11-3AR" firstAttribute="trailing" secondItem="vkZ-1R-Xgx" secondAttribute="trailing" constant="16" id="FuZ-iC-kmL"/>
                             <constraint firstItem="gqa-jY-a5l" firstAttribute="centerX" secondItem="Aqa-71-5dL" secondAttribute="centerX" id="Gdj-A7-gv6"/>
+                            <constraint firstItem="3gB-3q-7ly" firstAttribute="top" secondItem="vkZ-1R-Xgx" secondAttribute="bottom" constant="130" id="O3a-av-9qd"/>
                             <constraint firstItem="I4X-AK-xBd" firstAttribute="top" secondItem="3gB-3q-7ly" secondAttribute="bottom" constant="8" id="QyF-fm-V5J"/>
                             <constraint firstItem="fn8-U1-Ipf" firstAttribute="top" secondItem="I4X-AK-xBd" secondAttribute="bottom" constant="32" id="SD3-0E-Kgv"/>
                             <constraint firstItem="ZPQ-Fl-6gZ" firstAttribute="top" secondItem="Aqa-71-5dL" secondAttribute="top" constant="46" id="Smt-SY-8kh"/>
@@ -319,6 +320,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomLineConfirmButton" destination="AKj-Dl-SiQ" id="uSp-EK-Pv5"/>
                         <outlet property="buyTitle" destination="gqa-jY-a5l" id="uSa-eA-o4z"/>
                         <outlet property="confirmButton" destination="N1v-ZM-lwY" id="h4U-v1-wFT"/>
                         <outlet property="logoCompany" destination="eMT-wV-BpP" id="sv3-QH-mbm"/>
@@ -366,10 +368,11 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="XCJ-gB-D63"/>
                                 </constraints>
-                                <color key="tintColor" red="0.34901960780000002" green="0.33333333329999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" name="AccentColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Confirm" cornerStyle="large">
                                     <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="14"/>
+                                    <color key="baseBackgroundColor" red="0.34901960784313724" green="0.33333333333333331" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="confirmButtonTapped:" destination="DEt-do-1cm" eventType="touchUpInside" id="5zy-ap-fjA"/>
@@ -484,6 +487,9 @@
         <image name="NFLX" width="40" height="40"/>
         <image name="back" width="40" height="40"/>
         <image name="search" width="24" height="24"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="backgroundColorHome">
             <color red="0.97299998998641968" green="0.98000001907348633" blue="0.98400002717971802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
