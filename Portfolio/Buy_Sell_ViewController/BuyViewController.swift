@@ -17,10 +17,12 @@ class BuyViewController: UIViewController {
     
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var confirmButton: UIButton!
+    
     @IBOutlet weak var bottomLineConfirmButton: NSLayoutConstraint!
+    @IBOutlet weak var topTitleConstrain: NSLayoutConstraint!
     
     
-    var selectedStock: StockData?
+    var selectedStock: PortfolioData?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,11 +60,11 @@ class BuyViewController: UIViewController {
         view.endEditing(true)
     }
     
-    func configure(_ data: StockData) {
-        logoCompany.image = UIImage(named: data.logoNameCompany)
-        tickerStock.text = data.titleCompany
-        titleCompany.text = data.subtitleCompany
-        priceStock.text = "$" + data.stockPrice
+    func configure(_ data: PortfolioData) {
+        logoCompany.image = UIImage(named: data.symdol)
+        tickerStock.text = data.symdol
+        titleCompany.text = data.name
+        priceStock.text = "$" + data.price
     }
     
     private func configureStockViewCell() {
@@ -88,14 +90,13 @@ class BuyViewController: UIViewController {
     @IBAction func confirmButtonTapped(_ sender: Any) {
         
         guard
-                let stock = selectedStock,
-                let inputText = textField.text,
-                let amount = Double(inputText.replacingOccurrences(of: "$", with: "").trimmingCharacters(in: .whitespaces)),
-                amount >= Double(stock.stockPrice)! else {
+            var stock = selectedStock,
+            let inputText = textField.text,
+            let inputAmount = Double(inputText.replacingOccurrences(of: "$", with: "").trimmingCharacters(in:.whitespaces)) else {
             
             let alert = UIAlertController(
                 title: "Invalid Amount",
-                message: "Please enter an amount greater than the stock price.",
+                message: "Please enter an amount greater than zero.",
                 preferredStyle: .alert)
             
             alert.addAction(UIAlertAction(
@@ -109,25 +110,28 @@ class BuyViewController: UIViewController {
         
         let alert = UIAlertController(
             title: "Please confirm purchase",
-            message: "You’re buying \(selectedStock?.subtitleCompany ?? "Unknown company") at $\(selectedStock?.stockPrice ?? "Unknown price") per share for the amount of \(textField.text ?? "$0.00").",
+            message: "You’re buying \(selectedStock?.name ?? "Unknown company") at $\(selectedStock?.price ?? "Unknown price") per share for the amount of $\(inputAmount).",
             preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(
-            title: "Confirm",
-            style: .default,
-            handler: { _ in
-                guard let stock = self.selectedStock else { return }
-                StockDataRepository().addStockToPortfolio(stock) { success in
-                    if success {
-                        self.addStockInPortfolio(stock)
-                        DispatchQueue.main.async {
-                            self.dismiss(animated: true)
+        alert.addAction(
+            UIAlertAction(
+                title: "Confirm",
+                style: .default,
+                handler: { _ in
+                    
+                    stock.purchaseAmount += inputAmount
+                    
+                    StockDataRepository().addStockToPortfolio(stock) { success in
+                        if success {
+                            DispatchQueue.main.async {
+                                self.dismiss(animated: true)
+                            }
+                        } else {
+                            print("Doesn't ADD stocks to portfolio")
                         }
-                    } else {
-                        print("Doesn't ADD stocks to portfolio")
                     }
-                }
-            }))
+                })
+        )
         
         alert.addAction(UIAlertAction(
             title: "Cancel",
@@ -150,37 +154,15 @@ class BuyViewController: UIViewController {
     
     func adjustButtonPosition(up: Bool, height: CGFloat) {
         
+        let topPadding: CGFloat = 130
         let buttomPadding: CGFloat = 5.0
+        topTitleConstrain.constant = up ? topPadding - 70 : topPadding
         bottomLineConfirmButton.constant = up ? height + buttomPadding : buttomPadding
         
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
-    }
-    
-    private func addStockInPortfolio(_ stock: StockData) {
-
-        var portfolio = loadPortfolio()
-        portfolio.append(stock)
-        savePortfolio(portfolio)
-    }
-    
-    private func loadPortfolio() -> [StockData] {
-        
-        if let data = UserDefaults.standard.data(forKey: "portfolio"),
-            let portfolio = try? JSONDecoder().decode([StockData].self, from: data) {
-            return portfolio
-        }
-        return []
-    }
-    
-    private func savePortfolio(_ portfolio: [StockData]) {
-        
-        if let data = try? JSONEncoder().encode(portfolio) {
-            UserDefaults.standard.set(data, forKey: "portfolio")
-        }
-    }
-    
+    }    
 }
 
 extension BuyViewController: UITextFieldDelegate {

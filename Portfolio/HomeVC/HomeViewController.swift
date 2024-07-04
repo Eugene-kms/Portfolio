@@ -7,7 +7,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addNewStockButton: UIButton!
     
-    private var portfolio: [StockData] = []
+    private var portfolio: [PortfolioData] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,13 +22,14 @@ class HomeViewController: UIViewController {
     }
     
     private func configure() {
+        subtitleValue.text = "$ ?"
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "MyStockCell", bundle: nil), forCellReuseIdentifier: "MyStockCell")
         tableView.separatorStyle = .none
     }
     
-    private func loadPortfolio() {
+    func loadPortfolio() {
         
         guard let url = URL(string: "https://portfolio-4fdba-default-rtdb.europe-west1.firebasedatabase.app/portfolio.json") else { return }
         
@@ -40,21 +41,28 @@ class HomeViewController: UIViewController {
             
             do {
                 let decoder = JSONDecoder()
-                let portfolioData = try decoder.decode([String: StockData].self, from: data)
-                self.portfolio = Array(portfolioData.values)
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
+                let portfolioData = try decoder.decode([String: PortfolioData].self, from: data)
+                self.updatePortfolio(portfolioData: Array(portfolioData.values))
             } catch {
-                self.portfolio = []
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-                
+                self.updatePortfolio(portfolioData: [])
                 print("Error loadPortfolio()-2: \(error)")
             }
         }
         task.resume()
+    }
+    
+    func updatePortfolio(portfolioData: [PortfolioData]) {
+        self.portfolio = portfolioData
+        var total: Double = 0
+        
+        for element in portfolio {
+            total += element.purchaseAmount
+        }
+        
+        DispatchQueue.main.async {
+            self.subtitleValue.text = "$\(total)"
+            self.tableView.reloadData()
+        }
     }
 
     @IBAction func addNewStockButtonTapped(_ sender: Any) {

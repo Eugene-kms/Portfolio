@@ -56,8 +56,8 @@ class MarketViewController: UIViewController {
     private func presentBuy(for stock: StockData) {
         
         if let buyViewController = storyboard?.instantiateViewController(withIdentifier: "BuyViewController") as? BuyViewController {
-          
-            buyViewController.selectedStock = stock
+            
+            buyViewController.selectedStock = stock.toPortfolioData(purchaseAmount: 0)
             buyViewController.modalPresentationStyle = .fullScreen
             
             present(buyViewController, animated: true)
@@ -135,4 +135,3 @@ extension MarketViewController: UITableViewDelegate {
         presentBuy(for: selectedStocks)
     }
 }
-

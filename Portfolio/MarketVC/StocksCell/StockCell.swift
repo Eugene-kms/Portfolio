@@ -18,17 +18,18 @@ class StockCell: UITableViewCell {
     }
     
     func configure(_ data: StockData) {
-        logoCompany.image = UIImage(named: data.logoNameCompany)
-        tickerCompany.text = data.titleCompany
-        titleCompany.text = data.subtitleCompany
-        priceStock.text = "$" + data.stockPrice
-        changePrice.text = data.percentageChange
+        logoCompany.image = data.image
+        tickerCompany.text = data.symdol
+        titleCompany.text = data.name
+        priceStock.text = "$" + data.price
+        changePrice.text = data.percentChange
         lineGraph.data = data.graphData
         
         lineGraph.lineColor = data.isPriceUp ? UIColor(named: "greenColorFigma")! : .red
         
-        guard data.isChangePositive else { return changePrice.textColor = .red }
-        changePrice.textColor = UIColor(named: "greenColorFigma")!
+        changePrice.textColor = data.isPriceUp ? UIColor(named: "greenColorFigma")! : .red
+        
+       
     }
 
     private func configureFont() {

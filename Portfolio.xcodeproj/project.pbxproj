@@ -18,6 +18,7 @@
 		44548B482C2C963400107FA7 /* StockDataDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44548B472C2C963400107FA7 /* StockDataDTO.swift */; };
 		446ACD672C308826009F6426 /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446ACD662C308826009F6426 /* BuyViewController.swift */; };
 		446ACD692C318337009F6426 /* SellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446ACD682C318337009F6426 /* SellViewController.swift */; };
+		446ACD6B2C36E1DA009F6426 /* PortfolioData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446ACD6A2C36E1DA009F6426 /* PortfolioData.swift */; };
 		449FEEF32C2210C5005E24AE /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449FEEF22C2210C5005E24AE /* MarketViewController.swift */; };
 		449FEF012C2223A1005E24AE /* StockCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 449FEF002C2223A1005E24AE /* StockCell.xib */; };
 		449FEF022C2223A1005E24AE /* StockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449FEEFF2C2223A1005E24AE /* StockCell.swift */; };
@@ -50,6 +51,7 @@
 		44548B472C2C963400107FA7 /* StockDataDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockDataDTO.swift; sourceTree = "<group>"; };
 		446ACD662C308826009F6426 /* BuyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
 		446ACD682C318337009F6426 /* SellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellViewController.swift; sourceTree = "<group>"; };
+		446ACD6A2C36E1DA009F6426 /* PortfolioData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioData.swift; sourceTree = "<group>"; };
 		449FEEF22C2210C5005E24AE /* MarketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
 		449FEEFF2C2223A1005E24AE /* StockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockCell.swift; sourceTree = "<group>"; };
 		449FEF002C2223A1005E24AE /* StockCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StockCell.xib; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 			children = (
 				444822B12C1F6B9B0061B9E2 /* StockData.swift */,
 				44548B472C2C963400107FA7 /* StockDataDTO.swift */,
+				446ACD6A2C36E1DA009F6426 /* PortfolioData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 				443903692C2898250099E56B /* IndexCollectionViewCell.swift in Sources */,
 				449FEF022C2223A1005E24AE /* StockCell.swift in Sources */,
 				446ACD672C308826009F6426 /* BuyViewController.swift in Sources */,
+				446ACD6B2C36E1DA009F6426 /* PortfolioData.swift in Sources */,
 				444822B22C1F6B9B0061B9E2 /* StockData.swift in Sources */,
 				44548B482C2C963400107FA7 /* StockDataDTO.swift in Sources */,
 				44FEBB792C1E04E700562409 /* AppDelegate.swift in Sources */,

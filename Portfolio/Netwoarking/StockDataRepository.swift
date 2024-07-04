@@ -35,9 +35,9 @@ class StockDataRepository {
         task.resume()
     }
     
-    func addStockToPortfolio(_ stock: StockData, completion: @escaping (Bool) -> Void) {
+    func addStockToPortfolio(_ stock: PortfolioData, completion: @escaping (Bool) -> Void) {
         
-        guard let url = URL(string: "\(baseUrl)/portfolio/\(stock.titleCompany).json") else { completion(false)
+        guard let url = URL(string: "\(baseUrl)/portfolio/\(stock.symdol).json") else { completion(false)
             return
         }
         
@@ -64,9 +64,9 @@ class StockDataRepository {
         task.resume()
     }
     
-    func removeStockFromPortfolio(_ stock: StockData, completion: @escaping (Bool) -> Void) {
+    func removeStockFromPortfolio(_ stock: PortfolioData, completion: @escaping (Bool) -> Void) {
         
-        let symbol = stock.logoNameCompany
+        let symbol = stock.symdol
         let url = baseUrl.appendingPathComponent("portfolio/\(symbol).json")
         
         var request = URLRequest(url: url)

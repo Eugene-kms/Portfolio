@@ -14,8 +14,11 @@ class SellViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var confirmButton: UIButton!
     
+    @IBOutlet weak var topTitleConstrain: NSLayoutConstraint!
+    @IBOutlet weak var bottomLineConfirmButton: NSLayoutConstraint!
     
-    var selectedStock: StockData?
+    
+    var selectedStock: PortfolioData?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +30,13 @@ class SellViewController: UIViewController {
         if let data = selectedStock {
             configure(data)
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWiilShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     private func configureTextField() {
@@ -46,11 +56,11 @@ class SellViewController: UIViewController {
         view.endEditing(true)
     }
     
-    func configure(_ data: StockData) {
-        logoCompany.image = UIImage(named: data.logoNameCompany)
-        tickerStock.text = data.titleCompany
-        titleCompany.text = data.subtitleCompany
-        priceStock.text = "$" + data.stockPrice
+    func configure(_ data: PortfolioData) {
+        logoCompany.image = UIImage(named: data.symdol)
+        tickerStock.text = data.symdol
+        titleCompany.text = data.name
+        priceStock.text = "$" + data.price
     }
     
     private func configureStockViewCell() {
@@ -76,12 +86,49 @@ class SellViewController: UIViewController {
     
     @IBAction func confirmButtonTapped(_ sender: Any) {
         
-        guard let stock = selectedStock else { return }
+        guard
+                var stock = selectedStock,
+                let inputText = textField.text,
+                let inputAmount = Double(inputText.replacingOccurrences(of: "$", with: "").trimmingCharacters(in: .whitespaces)),
+                inputAmount <= stock.purchaseAmount,
+                inputAmount != 0 else {
             
+            let alert = UIAlertController(
+                title: "Invalid Amount",
+                message: "Please enter an amount <= the stock value.",
+                preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(
+                title: "Cancel",
+                style: .cancel))
+            
+            self.present(alert, animated: true)
+            
+            return
+        }
+        
+        var stockValue = stock.purchaseAmount
+        
+        guard stockValue >= inputAmount else {
+            print("Error of SALE amount stock!!!")
+            return
+        }
+        
+        stockValue -= inputAmount
+        
+        stock.purchaseAmount = stockValue
+            
+        if stock.purchaseAmount == 0 {
+            removeStock(stock)
+        } else {
+            updateStock(stock)
+        }
+    }
+    
+    private func removeStock(_ stock: PortfolioData) {
         StockDataRepository().removeStockFromPortfolio(stock) { success in
             DispatchQueue.main.async {
                 if success {
-                    self.removeStockFromPortfolio(stock)
                     self.dismiss(animated: true)
                 } else {
                     print("Doesn't REMOVE stocks to portfolio")
@@ -90,28 +137,38 @@ class SellViewController: UIViewController {
         }
     }
     
-    private func removeStockFromPortfolio(_ stock: StockData) {
-        
-        var portfolio = loadPortfolio()
-        if let index = portfolio.firstIndex(where: { $0.titleCompany == stock.titleCompany }) {
-            portfolio.remove(at: index)
-            savePortfolio(portfolio)
+    private func updateStock(_ stock: PortfolioData) {
+        StockDataRepository().addStockToPortfolio(stock) { success in
+            DispatchQueue.main.async {
+                if success {
+                    self.dismiss(animated: true)
+                } else {
+                    print("Doesn't REMOVE stocks to portfolio")
+                }
+            }
         }
     }
     
-    private func loadPortfolio() -> [StockData] {
-        
-        if let data = UserDefaults.standard.data(forKey: "portfolio"),
-            let portfolio = try? JSONDecoder().decode([StockData].self, from: data) {
-            return portfolio
+    @objc func keyboardWiilShow(notification: NSNotification) {
+        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
+            let keyboardHeight = keyboardFrame.height
+            adjustButtonPosition(up: true, height: keyboardHeight)
         }
-        return []
     }
     
-    private func savePortfolio(_ portfolio: [StockData]) {
+    @objc func keyboardWillHide(notification: NSNotification) {
+        adjustButtonPosition(up: false, height: 0)
+    }
+    
+    private func adjustButtonPosition(up: Bool, height: CGFloat) {
         
-        if let data = try? JSONEncoder().encode(portfolio) {
-            UserDefaults.standard.set(data, forKey: "portfolio")
+        let topPadding: CGFloat = 130
+        let buttomPadding: CGFloat = 5.0
+        topTitleConstrain.constant = up ? topPadding - 70 : topPadding
+        bottomLineConfirmButton.constant = up ? height + buttomPadding : buttomPadding
+        
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
         }
     }
 }
