@@ -8,8 +8,18 @@ struct StockData {
     let stockValue: String
     let titlePrice: String
     let stockPrice: String
+    let percentageChange: String
+    let graphData: [Double]
     
-    init(logoNameCompany: String, titleCompany: String, subtitleCompany: String, titleValue: String, stockValue: String, titlePrice: String, stockPrice: String) {
+    var isPriceUp: Bool {
+        return (graphData.last ?? 0) >= (graphData.first ?? 0)
+    }
+    
+    var isChangePositive: Bool {
+        return percentageChange.first == "+"
+    }
+    
+    init(logoNameCompany: String, titleCompany: String, subtitleCompany: String, titleValue: String, stockValue: String, titlePrice: String, stockPrice: String, percentageChange: String, graphData: [Double]) {
         self.logoNameCompany = logoNameCompany
         self.titleCompany = titleCompany
         self.subtitleCompany = subtitleCompany
@@ -17,5 +27,7 @@ struct StockData {
         self.stockValue = stockValue
         self.titlePrice = titlePrice
         self.stockPrice = stockPrice
+        self.percentageChange = percentageChange
+        self.graphData = graphData
     }
 }

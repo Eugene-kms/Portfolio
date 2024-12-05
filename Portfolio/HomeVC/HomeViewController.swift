@@ -15,7 +15,9 @@ class HomeViewController: UIViewController {
         titleValue: "Portfolio value",
         stockValue: "$7,666.23",
         titlePrice: "Stock Price",
-        stockPrice: "$2,111.03"),
+        stockPrice: "$2,111.03",
+        percentageChange: "",
+        graphData: []),
     StockData(
         logoNameCompany: "axcelis",
         titleCompany: "ACLS",
@@ -23,7 +25,9 @@ class HomeViewController: UIViewController {
         titleValue: "Portfolio value",
         stockValue: "$6,000.23",
         titlePrice: "Stock Price",
-        stockPrice: "$647.43")]
+        stockPrice: "$647.43",
+        percentageChange: "",
+        graphData: [])]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +49,11 @@ class HomeViewController: UIViewController {
 //    }
 
     @IBAction func addNewStockButtonTapped(_ sender: Any) {
+        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MarketViewController") as! MarketViewController
         
+        viewController.modalPresentationStyle = .fullScreen
+        
+        self.present(viewController, animated: true)
     }
     
 }

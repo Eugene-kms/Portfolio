@@ -15,6 +15,7 @@ class MyStockCell: UITableViewCell {
         super.awakeFromNib()
         
         configureCell()
+        configureFont()
     }
     
     func configure(with stockData: StockData) {
@@ -32,6 +33,15 @@ class MyStockCell: UITableViewCell {
         cardView.layer.masksToBounds = false
         
         self.selectionStyle = .none
+    }
+    
+    private func configureFont() {
+        titleCompany.font = UIFont(name: FontName.interTightBold.rawValue, size: 14)
+        subtitleCompany.font = UIFont(name: FontName.interTightRegular.rawValue, size: 10)
+        titleValue.font = UIFont(name: FontName.interTightRegular.rawValue, size: 12)
+        subtitleValue.font = UIFont(name: FontName.interTightSemiBold.rawValue, size: 18)
+        titleStockPrice.font = UIFont(name: FontName.interTightRegular.rawValue, size: 12)
+        subtitlePrice.font = UIFont(name: FontName.interTightSemiBold.rawValue, size: 18)
     }
     
 }
