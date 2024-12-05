@@ -18,14 +18,14 @@ class MyStockCell: UITableViewCell {
         configureFont()
     }
     
-    func configure(with stockData: StockData) {
-        logoCompany.image = UIImage(named: stockData.logoNameCompany)
-        titleCompany.text = stockData.titleCompany
-        subtitleCompany.text = stockData.subtitleCompany
-        titleValue.text = stockData.titleValue
-        subtitleValue.text = stockData.stockValue
-        titleStockPrice.text = stockData.titlePrice
-        subtitlePrice.text = stockData.stockPrice
+    func configure(with data: PortfolioData) {
+        logoCompany.image = UIImage(named: data.symdol)
+        titleCompany.text = data.symdol
+        subtitleCompany.text = data.name
+        titleValue.text = "Portfolio value"
+        subtitleValue.text = "$" + String(data.purchaseAmount)
+        titleStockPrice.text = "Stock Price"
+        subtitlePrice.text = "$" + data.price
     }
     
     private func configureCell() {

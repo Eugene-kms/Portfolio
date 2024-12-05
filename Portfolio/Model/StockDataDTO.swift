@@ -30,25 +30,3 @@ struct StockDataDTO: Codable {
         self.change = try container.decode([ChangeDTO].self, forKey: .change)
     }
 }
-
-extension StockDataDTO {
-    
-    func toDomain() -> StockData {
-        
-        let currentPrice = self.price
-        let previousPrice = self.change.sorted(by: { $0.date < $1.date }).last?.close ?? currentPrice
-        
-        let percentageChange = ((currentPrice - previousPrice) / previousPrice) * 100
-        
-        return StockData(
-            logoNameCompany: self.symbol,
-            titleCompany: self.symbol,
-            subtitleCompany: self.name,
-            titleValue: "Title Value",
-            stockValue: "\(currentPrice)",
-            titlePrice: "Title Price",
-            stockPrice: "\(currentPrice)",
-            percentageChange: String(format: "%@%.2f%%", percentageChange >= 0 ? "+" : "", percentageChange),
-            graphData: self.change.map { Double ($0.close) })
-    }
-}

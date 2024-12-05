@@ -21,17 +21,16 @@ class IndexCollectionViewCell: UICollectionViewCell {
     }
 
     func configure(_ index: StockData) {
-        logoIndex.image = UIImage(named: index.logoNameCompany)
-        titleIndex.text = index.titleCompany
-        subtitleIndex.text = index.subtitleCompany
-        priceIndex.text = index.stockPrice
-        priceChange.text = index.percentageChange
+        logoIndex.image = index.image
+        titleIndex.text = index.symdol
+        subtitleIndex.text = index.name
+        priceIndex.text = "$" + index.price
+        priceChange.text = index.percentChange
         lineGraph.data = index.graphData
         
         lineGraph.lineColor = index.isPriceUp ? UIColor(named: "greenColorFigma")! : .red
         
-        guard index.isChangePositive else { return priceChange.textColor = .red }
-        priceChange.textColor = UIColor(named: "greenColorFigma")!
+        priceChange.textColor = index.isPriceUp ? UIColor(named: "greenColorFigma")! : .red
     }
     
     private func configureFont() {
